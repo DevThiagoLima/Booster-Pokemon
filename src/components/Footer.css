@@ -1,0 +1,33 @@
+.rodape {
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+  flex: 1;
+}
+
+.rodape-box {
+    display: flex;
+    justify-content: center;
+    gap: 166px;
+    background-color: #222224;
+    padding: 1.7rem;
+    align-items: center;
+    text-align: center;
+}
+
+.pokebola-footer {
+    width: 103px;
+    height: 103px;
+}
+
+.nome {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 2rem;
+}
+
