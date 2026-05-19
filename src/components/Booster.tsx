@@ -4,29 +4,43 @@ import pikachu from "../assets/Img Pokemon/pikachu.png";
 import pokebola from "../assets/Img Pokemon/pokebola.png";
 import booster from "../assets/Img Pokemon/booster.png";
 import BoosterAberto from "./BoosterAberto";
-
-type Pokemon = {
-  id: number;
-  nome: string;
-  imagem: string;
-};
+import type { CartaColecao } from "../types/CartaColecao";
+import { adicionarCartasNaColecao } from "../services/colecaoService";
 
 function Booster() {
   const [aberto, setAberto] = useState(false);
-  const [pokemons, setPokemons] = useState<Pokemon[]>([]);
+  const [pokemons, setPokemons] = useState<CartaColecao[]>([]);
   const [loading, setLoading] = useState(false);
 
   async function abrirBooster() {
     setLoading(true);
-    const ids = Array.from({ length: 10 }, () => Math.floor(Math.random() * 1025) + 1);
-    const resultados = await Promise.all(
-      ids.map(id => fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then(r => r.json()))
+
+    const ids = Array.from(
+      { length: 10 },
+      () => Math.floor(Math.random() * 1025) + 1
     );
-    const pokemonsFormatados: Pokemon[] = resultados.map(p => ({
-      id: p.id,
-      nome: p.name,
-      imagem: p.sprites.other["official-artwork"].front_default,
+
+    const resultados = await Promise.all(
+      ids.map((id) =>
+        fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then((resposta) =>
+          resposta.json()
+        )
+      )
+    );
+
+    const pokemonsFormatados: CartaColecao[] = resultados.map((pokemon) => ({
+      id: pokemon.id,
+      nome: pokemon.name,
+      imagem: pokemon.sprites.other["official-artwork"].front_default,
+      tipos: pokemon.types.map(
+        (tipo: { type: { name: string } }) => tipo.type.name
+      ),
+      quantidade: 1,
+      favorita: false,
     }));
+
+    adicionarCartasNaColecao(pokemonsFormatados);
+
     setPokemons(pokemonsFormatados);
     setLoading(false);
     setAberto(true);

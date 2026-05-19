@@ -1,0 +1,169 @@
+.colecao-page {
+  min-height: 520px;
+  background-color: #f0f0f0;
+  padding: 3rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.colecao-intro {
+  width: 100%;
+  min-height: 430px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.colecao-botao {
+  background-color: #e9b63b;
+  color: #ffffff;
+  border: 1px solid #222224;
+  border-radius: 8px;
+  padding: 0.75rem 3.5rem;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.5rem;
+  text-shadow: 2px 2px 0 #222224;
+  cursor: pointer;
+}
+
+.colecao-botao:hover {
+  transform: scale(1.05);
+  transition: 0.2s;
+}
+
+.colecao-painel {
+  width: min(1080px, 100%);
+  min-height: 650px;
+  background-color: #222224;
+  border-radius: 16px;
+  padding: 2rem;
+  position: relative;
+}
+
+.colecao-fechar {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  width: 35px;
+  height: 35px;
+  border: none;
+  border-radius: 50%;
+  background-color: #e9b63b;
+  color: #ffffff;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.colecao-toolbar {
+  background-color: #ee1515;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.colecao-toolbar-icon {
+  width: 54px;
+  height: 54px;
+  object-fit: cover;
+}
+
+.colecao-busca {
+  flex: 1;
+  height: 44px;
+  border: none;
+  border-radius: 8px;
+  padding: 0 1.25rem;
+  font-size: 1.25rem;
+  font-family: monospace;
+  font-style: italic;
+}
+
+.colecao-select {
+  height: 44px;
+  min-width: 130px;
+  border: none;
+  border-radius: 8px;
+  padding: 0 0.75rem;
+  background-color: #f0f0f0;
+  color: #222224;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.1rem;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.colecao-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2rem;
+  justify-items: center;
+}
+
+.colecao-carta {
+  width: 150px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  position: relative;
+}
+
+.colecao-favorito {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 28px;
+  height: 28px;
+  border: 1px solid #222224;
+  border-radius: 50%;
+  background-color: #ffffff;
+  color: #222224;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.colecao-favorito.favorita {
+  background-color: #e9b63b;
+  color: #ffffff;
+}
+
+.colecao-carta-img {
+  width: 100%;
+  height: 130px;
+  object-fit: contain;
+  padding: 0.75rem;
+  box-sizing: border-box;
+}
+
+.colecao-carta-info {
+  background-color: #f0f0f0;
+  padding: 0.5rem;
+}
+
+.colecao-carta-info h2 {
+  color: #222224;
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  margin-bottom: 0.25rem;
+}
+
+.colecao-carta-info p,
+.colecao-carta-info span {
+  color: #222224;
+  font-size: 0.9rem;
+  text-transform: capitalize;
+}
+
+.colecao-vazia {
+  color: #ffffff;
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 4rem;
+}
