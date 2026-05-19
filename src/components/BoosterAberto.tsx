@@ -17,13 +17,20 @@ function BoosterAberto({ pokemons, onFechar }: Props) {
   const [viradas, setViradas] = useState<boolean[]>(Array(10).fill(false));
 
   function virarCarta(index: number) {
-    setViradas(prev => prev.map((v, i) => (i === index ? !v : v)));
+    setViradas((cartasViradas) =>
+      cartasViradas.map((virada, posicao) =>
+        posicao === index ? true : virada
+      )
+    );
   }
 
   return (
     <div className="overlay">
       <div className="overlay-box">
-        <button className="fechar" onClick={onFechar}>X</button>
+        <button className="fechar" onClick={onFechar}>
+          X
+        </button>
+
         <div className="cartas-grid">
           {pokemons.map((pokemon, index) => (
             <div
@@ -35,6 +42,7 @@ function BoosterAberto({ pokemons, onFechar }: Props) {
                 <div className="carta-verso">
                   <img src={cardVerso} alt="verso da carta" />
                 </div>
+
                 <div className="carta-frente">
                   <img src={pokemon.imagem} alt={pokemon.nome} />
                   <span>{pokemon.nome}</span>
