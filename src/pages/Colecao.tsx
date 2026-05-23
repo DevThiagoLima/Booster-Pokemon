@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./Colecao.css";
 import { alternarFavorito, buscarColecao } from "../services/colecaoService";
 import type { CartaColecao } from "../types/CartaColecao";
-import cardVerso from "../assets/Img Pokemon/bakground_card.png";
+import cardVerso from "../assets/Img Pokemon/pokebola_footer.png";
 
 function ordenarColecao(colecao: CartaColecao[]) {
   return [...colecao].sort((cartaA, cartaB) => {
@@ -56,7 +56,7 @@ function Colecao() {
   }
 
   return (
-    <main className="colecao-page">
+    <main className="colecao-page"> 
       {!exibirColecao && (
         <section className="colecao-intro">
           <button className="colecao-botao" onClick={carregarColecao}>
