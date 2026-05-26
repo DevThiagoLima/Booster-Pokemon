@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Colecao.css";
 import { alternarFavorito, buscarColecao } from "../services/colecaoService";
 import type { CartaColecao } from "../types/CartaColecao";
@@ -15,11 +15,24 @@ function ordenarColecao(colecao: CartaColecao[]) {
 }
 
 function Colecao() {
-  const [exibirColecao, setExibirColecao] = useState(false);
   const [colecao, setColecao] = useState<CartaColecao[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [erro, setErro] = useState("");
+
   const [termoBusca, setTermoBusca] = useState("");
   const [tipoSelecionado, setTipoSelecionado] = useState("");
   const [filtroQuantidade, setFiltroQuantidade] = useState("");
+
+  useEffect(() => {
+    try {
+      const cartasSalvas = buscarColecao();
+      setColecao(ordenarColecao(cartasSalvas));
+    } catch {
+      setErro("Erro ao carregar coleção.");
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
   const tiposDisponiveis = Array.from(
     new Set(colecao.flatMap((carta) => carta.tipos))
@@ -40,117 +53,122 @@ function Colecao() {
         (filtroQuantidade === "2" && carta.quantidade >= 2) ||
         (filtroQuantidade === "5" && carta.quantidade >= 5);
 
-      return correspondeAoNome && correspondeAoTipo && correspondeAQuantidade;
+      return (
+        correspondeAoNome &&
+        correspondeAoTipo &&
+        correspondeAQuantidade
+      );
     })
   );
-
-  function carregarColecao() {
-    const cartasSalvas = buscarColecao();
-    setColecao(ordenarColecao(cartasSalvas));
-    setExibirColecao(true);
-  }
 
   function marcarFavorito(cartaId: number) {
     const colecaoAtualizada = alternarFavorito(cartaId);
     setColecao(ordenarColecao(colecaoAtualizada));
   }
 
+  if (loading) {
+    return (
+      <main className="colecao-page">
+        <p>Carregando coleção...</p>
+      </main>
+    );
+  }
+
+  if (erro) {
+    return (
+      <main className="colecao-page">
+        <p>{erro}</p>
+      </main>
+    );
+  }
+
   return (
-    <main className="colecao-page"> 
-      {!exibirColecao && (
-        <section className="colecao-intro">
-          <button className="colecao-botao" onClick={carregarColecao}>
-            EXIBIR COLEÇÃO
-          </button>
-        </section>
-      )}
+    <main className="colecao-page">
+      <section className="colecao-painel">
+        <div className="colecao-toolbar">
+          <img
+            src={cardVerso}
+            alt=""
+            className="colecao-toolbar-icon"
+          />
 
-      {exibirColecao && (
-        <section className="colecao-painel">
-          <button
-            className="colecao-fechar"
-            onClick={() => setExibirColecao(false)}
+          <input
+            className="colecao-busca"
+            type="text"
+            placeholder="Pesquisar Pokemon ..."
+            value={termoBusca}
+            onChange={(event) => setTermoBusca(event.target.value)}
+          />
+
+          <select
+            className="colecao-select"
+            value={tipoSelecionado}
+            onChange={(event) =>
+              setTipoSelecionado(event.target.value)
+            }
           >
-            X
-          </button>
+            <option value="">Todos os tipos</option>
 
-          <div className="colecao-toolbar">
-            <img src={cardVerso} alt="" className="colecao-toolbar-icon" />
+            {tiposDisponiveis.map((tipo) => (
+              <option key={tipo} value={tipo}>
+                {tipo}
+              </option>
+            ))}
+          </select>
 
-            <input
-              className="colecao-busca"
-              type="text"
-              placeholder="Pesquisar Pokemon ..."
-              value={termoBusca}
-              onChange={(event) => setTermoBusca(event.target.value)}
-            />
+          <select
+            className="colecao-select"
+            value={filtroQuantidade}
+            onChange={(event) =>
+              setFiltroQuantidade(event.target.value)
+            }
+          >
+            <option value="">Todas qtds</option>
+            <option value="1">Tenho 1</option>
+            <option value="2">Tenho 2+</option>
+            <option value="5">Tenho 5+</option>
+          </select>
+        </div>
 
-            <select
-              className="colecao-select"
-              value={tipoSelecionado}
-              onChange={(event) => setTipoSelecionado(event.target.value)}
-            >
-              <option value="">Todos os tipos</option>
+        {colecaoFiltrada.length === 0 ? (
+          <p className="colecao-vazia">
+            Nenhuma carta encontrada.
+          </p>
+        ) : (
+          <div className="colecao-grid">
+            {colecaoFiltrada.map((carta) => (
+              <article className="colecao-carta" key={carta.id}>
+                <button
+                  className={`colecao-favorito ${
+                    carta.favorita ? "favorita" : ""
+                  }`}
+                  onClick={() => marcarFavorito(carta.id)}
+                  type="button"
+                  aria-label={
+                    carta.favorita
+                      ? "Remover dos favoritos"
+                      : "Adicionar aos favoritos"
+                  }
+                >
+                  {carta.favorita ? "★" : "☆"}
+                </button>
 
-              {tiposDisponiveis.map((tipo) => (
-                <option key={tipo} value={tipo}>
-                  {tipo}
-                </option>
-              ))}
-            </select>
+                <img
+                  className="colecao-carta-img"
+                  src={carta.imagem}
+                  alt={carta.nome}
+                />
 
-            <select
-              className="colecao-select"
-              value={filtroQuantidade}
-              onChange={(event) => setFiltroQuantidade(event.target.value)}
-            >
-              <option value="">Todas qtds</option>
-              <option value="1">Tenho 1</option>
-              <option value="2">Tenho 2+</option>
-              <option value="5">Tenho 5+</option>
-            </select>
+                <div className="colecao-carta-info">
+                  <h2>{carta.nome}</h2>
+                  <p>{carta.tipos.join(" / ")}</p>
+                  <span>Qtd: {carta.quantidade}</span>
+                </div>
+              </article>
+            ))}
           </div>
-
-          {colecaoFiltrada.length === 0 ? (
-            <p className="colecao-vazia">
-              Nenhuma carta encontrada.
-            </p>
-          ) : (
-            <div className="colecao-grid">
-              {colecaoFiltrada.map((carta) => (
-                <article className="colecao-carta" key={carta.id}>
-                  <button
-                    className={`colecao-favorito ${
-                      carta.favorita ? "favorita" : ""
-                    }`}
-                    onClick={() => marcarFavorito(carta.id)}
-                    type="button"
-                    aria-label={
-                      carta.favorita
-                        ? "Remover dos favoritos"
-                        : "Adicionar aos favoritos"
-                    }
-                  >
-                    {carta.favorita ? "★" : "☆"}
-                  </button>
-
-                  <img
-                    className="colecao-carta-img"
-                    src={carta.imagem}
-                    alt={carta.nome}
-                  />
-
-                  <div className="colecao-carta-info">
-                    <h2>{carta.nome}</h2>
-                    <p>{carta.tipos.join(" / ")}</p>
-                    <span>Qtd: {carta.quantidade}</span>
-                  </div>
-                </article>
-              ))}
-            </div>
-          )}
-        </section>
-      )}
+        )}
+      </section>
     </main>
   );
 }

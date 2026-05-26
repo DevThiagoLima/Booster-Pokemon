@@ -167,3 +167,17 @@
   text-align: center;
   margin-top: 4rem;
 }
+
+.colecao-vazia {
+  color: black;
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+}
+
+.colecao-page p {
+  color: black;
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+}
