@@ -3,6 +3,7 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  padding: 1.5rem 0;
 }
 
 .img-esquerda {
@@ -17,10 +18,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
+  gap: 2.5rem;
   justify-content: center;
-  width: 350px;
-  height: 500px;
+  width: 440px;
+  padding: 3rem 2rem;
   background: linear-gradient(
     145deg,
     var(--color-primary) 0%,
@@ -29,17 +30,22 @@
   );
   border-radius: 32px;
   margin: 2rem;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.45);
 }
 
 .card-box-button {
   background-color: var(--color-accent);
-  padding: 0.5rem 3rem;
+  padding: 0.75rem 3.5rem;
   border-radius: 16px;
-  font-size: 32px;
+  font-size: 2.2rem;
   font-family: var(--font-main);
   font-weight: 400;
   font-style: normal;
   color: var(--color-white);
+  white-space: nowrap;
+  border: none;
+  outline: none;
+  width: 100%;
 }
 
 .card-box-button:hover {
@@ -49,8 +55,10 @@
 }
 
 .booster-img {
-  width: 200px;
-  height: 300px;
+  width: auto;
+  height: min(44vh, 320px);
+  max-width: 100%;
+  object-fit: contain;
 }
 
 .booster-img:hover {
@@ -83,21 +91,25 @@
   }
 
   .card-box {
-    width: 320px;
-    height: 460px;
-    margin: 3rem auto;
+    width: 400px;
+    padding: 2.5rem 2rem;
+    margin: 2rem auto;
+  }
+
+  .booster-img {
+    height: min(42vh, 290px);
   }
 
   .card-box-button {
-    font-size: 1.6rem;
-    padding: 0.5rem 2.5rem;
+    font-size: 2rem;
+    padding: 0.65rem 3rem;
   }
 }
 
 @media (max-width: 640px) {
   .section {
     flex-direction: column;
-    padding: 1.5rem 1rem;
+    padding: 2rem 1rem;
   }
 
   .img-esquerda,
@@ -107,16 +119,22 @@
 
   .card-box {
     width: 90vw;
-    max-width: 320px;
+    max-width: 380px;
     height: auto;
-    padding: 2rem 1rem;
+    padding: 2.5rem 2rem;
     margin: 0;
     gap: 2rem;
   }
 
   .booster-img {
-    width: 140px;
-    height: 210px;
+    width: 70%;
+    max-width: 220px;
+    height: auto;
+  }
+
+  .card-box-button {
+    font-size: 1.8rem;
+    padding: 0.65rem 2rem;
   }
 
   .card-box-button {
