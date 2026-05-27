@@ -104,6 +104,65 @@
   justify-items: center;
 }
 
+/* ── Tablet ─────────────────────────────────── */
+@media (max-width: 1024px) {
+  .colecao-painel {
+    padding: 1.5rem;
+  }
+
+  .colecao-toolbar {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .colecao-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+/* ── Mobile ─────────────────────────────────── */
+@media (max-width: 640px) {
+  .colecao-page {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .colecao-painel {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+
+  .colecao-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .colecao-toolbar-icon {
+    display: none;
+  }
+
+  .colecao-busca {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .colecao-select {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .colecao-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .colecao-carta {
+    width: 100%;
+  }
+}
+
 .colecao-carta {
   width: 150px;
   background-color: var(--color-white);
