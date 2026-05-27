@@ -18,7 +18,7 @@
   background-color: #1a1a2e;
   border: 2px solid #4a90d9;
   border-radius: 16px;
-  padding: 1.5rem;
+  padding: 3.5rem 1.5rem 1.5rem;
   position: relative;
   margin: auto;
   width: min(1050px, 95vw);
@@ -27,8 +27,8 @@
 
 .fechar {
   position: absolute;
-  top: 0.6rem;
-  right: 0.6rem;
+  top: 0.75rem;
+  right: 0.75rem;
   background-color: var(--color-accent);
   color: white;
   border: none;
@@ -38,6 +38,7 @@
   font-size: 1rem;
   font-family: var(--font-main);
   cursor: pointer;
+  z-index: 1;
 }
 
 .fechar:hover {
@@ -49,7 +50,7 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 1rem;
-  margin-top: 0.5rem;
+  margin-top: 0;
 }
 
 .carta {
