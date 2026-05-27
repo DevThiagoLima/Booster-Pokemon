@@ -1,61 +1,71 @@
 .section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .img-esquerda {
-    width: 400px;
-    height: 400px;
-    opacity: 10%;
-    padding: 7.5rem;
-    transform: rotate(-10deg);
+  width: 400px;
+  height: 400px;
+  opacity: 10%;
+  padding: 7.5rem;
+  transform: rotate(-10deg);
 }
 
 .card-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3rem;
-    justify-content: center;
-    width: 350px;
-    height: 500px;
-    background: linear-gradient(145deg, #EE1515 0%, #F0F0F0 50%, #222224 100%);
-    border-radius: 32px;
-    margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  justify-content: center;
+  width: 350px;
+  height: 500px;
+  background: linear-gradient(145deg, #ee1515 0%, #f0f0f0 50%, #222224 100%);
+  border-radius: 32px;
+  margin: 2rem;
 }
 
 .card-box-button {
-    background-color: #E9B63B;
-    padding: 0.5rem 3rem;
-    border-radius: 16px;
-    font-size: 32px;
-    font-family: "Bebas Neue", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    color: #FFFFFF;
+  background-color: #e9b63b;
+  padding: 0.5rem 3rem;
+  border-radius: 16px;
+  font-size: 32px;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #ffffff;
 }
 
 .card-box-button:hover {
-    transform: scale(1.08);
-    transition: 0.2s;
-    cursor:pointer;
+  transform: scale(1.08);
+  transition: 0.2s;
+  cursor: pointer;
 }
 
 .booster-img {
-    width: 200px;
-    height: 300px;
+  width: 200px;
+  height: 300px;
 }
 
-.booster-img:hover{
-    transition: 0.2s;
-    transform: scale(1.08);
+.booster-img:hover {
+  transition: 0.2s;
+  transform: scale(1.08);
+}
+
+.card-box-erro {
+  color: #ee1515;
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 0 1rem;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
 }
 
 .img-direita {
-    width: 400px;
-    height: 400px;
-    opacity: 10%;
-    padding: 7.5rem;
-    transform: rotate(10deg);
+  width: 400px;
+  height: 400px;
+  opacity: 10%;
+  padding: 7.5rem;
+  transform: rotate(10deg);
 }

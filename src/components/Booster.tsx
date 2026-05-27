@@ -6,44 +6,28 @@ import booster from "../assets/Img Pokemon/booster.png";
 import BoosterAberto from "./BoosterAberto";
 import type { CartaColecao } from "../types/CartaColecao";
 import { adicionarCartasNaColecao } from "../services/colecaoService";
+import { buscarPokemonsAleatorios } from "../services/pokemonService";
 
 function Booster() {
   const [aberto, setAberto] = useState(false);
   const [pokemons, setPokemons] = useState<CartaColecao[]>([]);
   const [loading, setLoading] = useState(false);
+  const [erro, setErro] = useState("");
 
   async function abrirBooster() {
     setLoading(true);
+    setErro("");
 
-    const ids = Array.from(
-      { length: 10 },
-      () => Math.floor(Math.random() * 1025) + 1
-    );
-
-    const resultados = await Promise.all(
-      ids.map((id) =>
-        fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then((resposta) =>
-          resposta.json()
-        )
-      )
-    );
-
-    const pokemonsFormatados: CartaColecao[] = resultados.map((pokemon) => ({
-      id: pokemon.id,
-      nome: pokemon.name,
-      imagem: pokemon.sprites.other["official-artwork"].front_default,
-      tipos: pokemon.types.map(
-        (tipo: { type: { name: string } }) => tipo.type.name
-      ),
-      quantidade: 1,
-      favorita: false,
-    }));
-
-    adicionarCartasNaColecao(pokemonsFormatados);
-
-    setPokemons(pokemonsFormatados);
-    setLoading(false);
-    setAberto(true);
+    try {
+      const pokemonsFormatados = await buscarPokemonsAleatorios();
+      adicionarCartasNaColecao(pokemonsFormatados);
+      setPokemons(pokemonsFormatados);
+      setAberto(true);
+    } catch {
+      setErro("Failed to open booster. Check your connection and try again.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -54,9 +38,15 @@ function Booster() {
         <div className="card-box">
           <img className="booster-img" src={booster} alt="" />
 
-          <button className="card-box-button" onClick={abrirBooster} disabled={loading}>
+          <button
+            className="card-box-button"
+            onClick={abrirBooster}
+            disabled={loading}
+          >
             {loading ? "CARREGANDO..." : "ABRIR BOOSTER"}
           </button>
+
+          {erro && <p className="card-box-erro">{erro}</p>}
         </div>
 
         <img className="img-direita" src={pokebola} alt="" />
