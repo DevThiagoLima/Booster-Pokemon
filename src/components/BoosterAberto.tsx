@@ -1,15 +1,10 @@
 import { useState } from "react";
 import "./BoosterAberto.css";
 import cardVerso from "../assets/Img Pokemon/bakground_card.png";
-
-type Pokemon = {
-  id: number;
-  nome: string;
-  imagem: string;
-};
+import type { CartaColecao } from "../types/CartaColecao";
 
 type Props = {
-  pokemons: Pokemon[];
+  pokemons: CartaColecao[];
   onFechar: () => void;
 };
 
@@ -19,8 +14,8 @@ function BoosterAberto({ pokemons, onFechar }: Props) {
   function virarCarta(index: number) {
     setViradas((cartasViradas) =>
       cartasViradas.map((virada, posicao) =>
-        posicao === index ? true : virada
-      )
+        posicao === index ? true : virada,
+      ),
     );
   }
 
