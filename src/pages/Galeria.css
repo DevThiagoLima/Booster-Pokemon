@@ -1,6 +1,6 @@
 .galeria-page {
   min-height: 520px;
-  background-color: #f0f0f0;
+  background-color: var(--color-light);
   padding: 3rem 2rem;
   display: flex;
   justify-content: center;
@@ -18,14 +18,14 @@
 .galeria-botao,
 .galeria-salvar,
 .galeria-editar {
-  background-color: #e9b63b;
-  color: #ffffff;
-  border: 1px solid #222224;
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  border: 1px solid var(--color-dark);
   border-radius: 8px;
   padding: 0.75rem 2rem;
-  font-family: "Bebas Neue", sans-serif;
+  font-family: var(--font-main);
   font-size: 1.2rem;
-  text-shadow: 2px 2px 0 #222224;
+  text-shadow: 2px 2px 0 var(--color-dark);
   cursor: pointer;
 }
 
@@ -50,7 +50,7 @@
 .galeria-painel {
   width: min(980px, 100%);
   min-height: 620px;
-  background-color: #222224;
+  background-color: var(--color-dark);
   border-radius: 16px;
   padding: 2rem;
   position: relative;
@@ -65,15 +65,15 @@
   height: 35px;
   border: none;
   border-radius: 50%;
-  background-color: #e9b63b;
-  color: #ffffff;
-  font-family: "Bebas Neue", sans-serif;
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  font-family: var(--font-main);
   font-size: 1rem;
   cursor: pointer;
 }
 
 .galeria-toolbar {
-  background-color: #ee1515;
+  background-color: var(--color-primary);
   border-radius: 8px;
   padding: 1rem 1.5rem;
   display: flex;
@@ -90,15 +90,15 @@
 
 .galeria-contador {
   flex: 1;
-  color: #ffffff;
+  color: var(--color-white);
   font-size: 1.5rem;
-  text-shadow: 2px 2px 0 #222224;
+  text-shadow: 2px 2px 0 var(--color-dark);
 }
 
 .galeria-mensagem-limite {
-  color: #e9b63b;
+  color: var(--color-accent);
   font-size: 1.25rem;
-  text-shadow: 2px 2px 0 #222224;
+  text-shadow: 2px 2px 0 var(--color-dark);
   margin-bottom: 1.5rem;
 }
 
@@ -111,13 +111,13 @@
 
 .galeria-carta-selecao {
   width: 140px;
-  background-color: #ffffff;
+  background-color: var(--color-white);
   border: 3px solid transparent;
   border-radius: 8px;
   overflow: hidden;
   padding: 0;
   cursor: pointer;
-  font-family: "Bebas Neue", sans-serif;
+  font-family: var(--font-main);
 }
 
 .galeria-carta-selecao img {
@@ -130,22 +130,22 @@
 
 .galeria-carta-selecao span {
   display: block;
-  background-color: #f0f0f0;
-  color: #222224;
+  background-color: var(--color-light);
+  color: var(--color-dark);
   padding: 0.5rem;
   font-size: 1rem;
   text-transform: capitalize;
 }
 
 .galeria-carta-selecao.selecionada {
-  border-color: #e9b63b;
+  border-color: var(--color-accent);
   transform: scale(1.04);
 }
 
 .galeria-titulo {
-  color: #ffffff;
+  color: var(--color-white);
   font-size: 2rem;
-  text-shadow: 2px 2px 0 #222224;
+  text-shadow: 2px 2px 0 var(--color-dark);
   margin-bottom: 2rem;
 }
 
@@ -160,7 +160,7 @@
 
 .galeria-carta-final {
   width: 150px;
-  background-color: #ffffff;
+  background-color: var(--color-white);
   border-radius: 8px;
   overflow: hidden;
   text-align: center;
@@ -176,15 +176,15 @@
 
 .galeria-carta-final span {
   display: block;
-  background-color: #f0f0f0;
-  color: #222224;
+  background-color: var(--color-light);
+  color: var(--color-dark);
   font-size: 1rem;
   text-transform: capitalize;
   padding: 0.5rem;
 }
 
 .galeria-vazia {
-  color: #ffffff;
+  color: var(--color-white);
   font-size: 2rem;
   margin-top: 4rem;
   margin-bottom: 2rem;

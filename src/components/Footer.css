@@ -11,7 +11,7 @@
     display: flex;
     justify-content: center;
     gap: 166px;
-    background-color: #222224;
+    background-color: var(--color-dark);
     padding: 1.7rem;
     align-items: center;
     text-align: center;
@@ -27,7 +27,7 @@
     align-items: center;
     gap: 1rem;
     text-decoration: none;
-    color: #FFFFFF;
+    color: var(--color-white);
     font-size: 2rem;
 }
 

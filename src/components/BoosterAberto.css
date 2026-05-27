@@ -23,14 +23,14 @@
   position: absolute;
   top: -15px;
   right: -15px;
-  background-color: #E9B63B;
+  background-color: var(--color-accent);
   color: white;
   border: none;
   border-radius: 50%;
   width: 35px;
   height: 35px;
   font-size: 1rem;
-  font-family: "Bebas Neue", sans-serif;
+  font-family: var(--font-main);
   cursor: pointer;
 }
 
@@ -86,7 +86,7 @@
 
 .carta-frente {
   transform: rotateY(180deg);
-  background-color: #ffffff;
+  background-color: var(--color-white);
   gap: 0.5rem;
 }
 
@@ -97,8 +97,8 @@
 }
 
 .carta-frente span {
-  font-family: "Bebas Neue", sans-serif;
+  font-family: var(--font-main);
   font-size: 1rem;
   text-transform: capitalize;
-  color: #222224;
+  color: var(--color-dark);
 }
