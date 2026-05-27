@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 .img-esquerda {
@@ -74,27 +75,25 @@
   padding: 7.5rem;
   transform: rotate(10deg);
 }
-/* ── Tablet ─────────────────────────────────── */
+
 @media (max-width: 1024px) {
   .img-esquerda,
   .img-direita {
-    width: 200px;
-    height: 200px;
-    padding: 3rem;
+    display: none;
   }
 
   .card-box {
-    width: 280px;
-    height: 420px;
+    width: 320px;
+    height: 460px;
+    margin: 3rem auto;
   }
 
   .card-box-button {
-    font-size: 1.5rem;
-    padding: 0.5rem 2rem;
+    font-size: 1.6rem;
+    padding: 0.5rem 2.5rem;
   }
 }
 
-/* ── Mobile ─────────────────────────────────── */
 @media (max-width: 640px) {
   .section {
     flex-direction: column;

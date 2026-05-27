@@ -18,7 +18,20 @@
   flex-wrap: wrap;
 }
 
-/* ── Tablet ─────────────────────────────────── */
+.pokebola-footer {
+  width: 103px;
+  height: 103px;
+}
+
+.nome {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: var(--color-white);
+  font-size: 2rem;
+}
+
 @media (max-width: 1024px) {
   .rodape-box {
     gap: 3rem;
@@ -34,7 +47,6 @@
   }
 }
 
-/* ── Mobile ─────────────────────────────────── */
 @media (max-width: 640px) {
   .rodape-box {
     flex-direction: column;
@@ -50,18 +62,4 @@
   .nome {
     font-size: 1.2rem;
   }
-}
-
-.pokebola-footer {
-  width: 103px;
-  height: 103px;
-}
-
-.nome {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  text-decoration: none;
-  color: var(--color-white);
-  font-size: 2rem;
 }
