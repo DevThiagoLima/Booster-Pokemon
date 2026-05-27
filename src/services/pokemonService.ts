@@ -5,10 +5,11 @@ const BOOSTER_SIZE = 10;
 const POKEDEX_SIZE = 1025;
 
 function gerarIdsAleatorios(quantidade: number): number[] {
-  return Array.from(
-    { length: quantidade },
-    () => Math.floor(Math.random() * POKEDEX_SIZE) + 1,
-  );
+  const ids = new Set<number>();
+  while (ids.size < quantidade) {
+    ids.add(Math.floor(Math.random() * POKEDEX_SIZE) + 1);
+  }
+  return Array.from(ids);
 }
 
 export async function buscarPokemonsAleatorios(): Promise<CartaColecao[]> {

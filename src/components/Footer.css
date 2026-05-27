@@ -9,57 +9,71 @@
 
 .rodape-box {
   display: flex;
-  justify-content: center;
-  gap: 8rem;
-  background-color: var(--color-dark);
-  padding: 1.7rem;
+  justify-content: space-evenly;
   align-items: center;
   text-align: center;
-  flex-wrap: wrap;
+  background-color: var(--color-dark);
+  padding: 1.7rem 2rem;
+  flex-wrap: nowrap;
+  gap: 0;
 }
 
 .pokebola-footer {
   width: 103px;
   height: 103px;
+  flex-shrink: 0;
 }
 
 .nome {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
   text-decoration: none;
   color: var(--color-white);
-  font-size: 2rem;
+  font-size: 1.6rem;
+  white-space: nowrap;
+}
+
+.nome img {
+  width: 32px;
+  height: 32px;
 }
 
 @media (max-width: 1024px) {
-  .rodape-box {
-    gap: 3rem;
+  .nome {
+    font-size: 1.1rem;
+  }
+
+  .nome img {
+    width: 22px;
+    height: 22px;
   }
 
   .pokebola-footer {
-    width: 80px;
-    height: 80px;
-  }
-
-  .nome {
-    font-size: 1.5rem;
+    width: 64px;
+    height: 64px;
   }
 }
 
 @media (max-width: 640px) {
   .rodape-box {
     flex-direction: column;
+    flex-wrap: wrap;
     gap: 1rem;
     padding: 1.25rem;
   }
 
   .pokebola-footer {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
   }
 
   .nome {
-    font-size: 1.2rem;
+    font-size: 1rem;
+  }
+
+  .nome img {
+    width: 18px;
+    height: 18px;
   }
 }
